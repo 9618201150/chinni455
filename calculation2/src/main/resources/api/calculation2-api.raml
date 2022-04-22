@@ -1,0 +1,57 @@
+#%RAML 1.0
+title: calculation2-api
+version: v1
+protocols:
+  - HTTP
+
+traits:
+  que: !include traits/trait.raml
+/add:
+  is: [que]
+  get:
+   responses:
+      200:
+       body:
+        application/json:
+          example: !include examples/request/request-cal.json
+          
+      400:
+        body:
+          application/json:
+            example:
+              {
+                "bad request"
+              }
+/sub:
+  is:
+    - que
+  patch:
+    responses:
+        200:
+          body:
+             application/json:
+                 example: !include examples/request/request-sub.json
+        401:
+          body:
+            application/json:
+              example:
+                {
+                  "massage" : "bad request"
+                }
+              
+          
+          
+
+                                                                                                             
+      
+
+
+          
+               
+              
+                                   
+                                                                                         
+                    
+           
+   
+    

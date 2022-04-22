@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="new-test-suite.xml" />
+	<munit:test name="new-test-suite-calculation2-api-mainTest" doc:id="aa7e6b59-f163-44e3-ab95-5cc4cc809469" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to calculation2-api-main" doc:id="5e8271e7-96bf-4b0e-a06b-915a069c0c35" name="calculation2-api-main"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="new-test-suite-calculation2-api-consoleTest" doc:id="79294d25-3306-42e1-af05-58decef08bea" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to calculation2-api-console" doc:id="834dc174-89b5-4fa4-bcf0-0ec376bf690e" name="calculation2-api-console"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="new-test-suite-patch:\sub:calculation2-api-configTest" doc:id="64d552c8-6f2c-4eb0-b9ed-109a04e81596" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to patch:\sub:calculation2-api-config" doc:id="f937386f-2dd8-4421-b013-5294b1edb784" name="patch:\sub:calculation2-api-config"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="new-test-suite-get:\add:calculation2-api-configTest" doc:id="3a63e1df-fb82-4667-875a-6e1ae398cd8c" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\add:calculation2-api-config" doc:id="6f8b0ff4-73d7-439e-b8d3-1ec4b9542812" name="get:\add:calculation2-api-config"/>
+		</munit:execution>
+	</munit:test>
+
+
+</mule>

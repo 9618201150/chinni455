@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="calculation2-api-suite.xml" />
+	<munit:test name="patch:\sub:calculation2-api-config-test" doc:id="81cad66d-07bf-445b-bf3d-10a9970d4500" >
+		<munit:behavior >
+			<munit:set-event doc:name="Set Input" doc:id="dfa5597d-58fe-4d93-bcf2-dbb7fabeaec8" >
+				<munit:payload value="#[readUrl('classpath://patchsubcalculation2apiconfigtest\set-event_payload.dwl')]" encoding="UTF-8" />
+				<munit:attributes value="#[readUrl('classpath://patchsubcalculation2apiconfigtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://patchsubcalculation2apiconfigtest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to patch:\sub:calculation2-api-config" doc:id="78e72ba6-2225-4208-b386-d5fba589b388" name="patch:\sub:calculation2-api-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="d7679435-d2b9-4b63-adea-a3dbde6a86e3" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import patchsubcalculation2apiconfigtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="get:\add:calculation2-api-config-test" doc:id="54ec13b8-eb6a-4d80-99d1-d7eb9f9300ec" >
+		<munit:behavior >
+			<munit:set-event doc:name="Set Input" doc:id="331ad799-3f15-4e72-9190-b7b4272d60b0" >
+				<munit:payload value="#[readUrl('classpath://getaddcalculation2apiconfigtest\set-event_payload.dwl')]" encoding="UTF-8" />
+				<munit:attributes value="#[readUrl('classpath://getaddcalculation2apiconfigtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://getaddcalculation2apiconfigtest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\add:calculation2-api-config" doc:id="a06b9c53-9840-4610-a04b-87da1fb91c04" name="get:\add:calculation2-api-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="e39b1b81-963f-428d-a27d-bc2e5a3c49f1" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import getaddcalculation2apiconfigtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
